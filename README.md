@@ -2,7 +2,7 @@
 
 **SWM231 Mobile Programming · Бүтээлч ажил** · B22FT1005 · 406 анги
 
-📲 **Утсан дээр нээх:** APK — [Expo build хуудас (Install / QR)](https://expo.dev/accounts/bayalagmaa/projects/inner-world-bayalagmaa/builds/31c9d86f-dea2-4925-bfe6-9d3c30a13a39)
+📲 **Утсан дээр нээх:** APK — [Expo build хуудас (Install / QR)](https://expo.dev/accounts/bayalagmaa/projects/inner-world-bayalagmaa/builds/c8936f34-b359-42bf-8bdd-1f68c6e25f30)
 🐙 **GitHub:** https://github.com/Bayalagmaa13
 ✉️ nbayalagmaaa@gmail.com
 
