@@ -64,18 +64,20 @@ function InnerWorld() {
   const scroll = useRef<ScrollViewInstance>(null);
   const tops = useRef<number[]>(Array.from({ length: SECTIONS }, (_, i) => i * height));
 
-  const changeEmotion = (i: number) => {
+  const changeEmotion = (i: number, sound = true) => {
     thud();
     setEmo(i);
     input.current.bounce = true;
   };
 
-  // Сэгсрэхэд: гайхсан царай + мэдэгдэл
+  // Easter egg — сэгсрэхэд: гайхсан царай + дуу + нууц баримт
+  const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useShake(() => {
     warn();
-    changeEmotion(1);
-    setToast(t(ui.shake));
-    setTimeout(() => setToast(null), 2200);
+    changeEmotion(1, false);
+    setToast(`${t(ui.shake)}\n${t(profile.funFact)}`);
+    if (toastTimer.current) clearTimeout(toastTimer.current);
+    toastTimer.current = setTimeout(() => setToast(null), 6000);
   }, openProject === null);
 
   // Хуруу (эсвэл вэб дээр хулгана) хөдлөхөд дүр тийш харна
@@ -265,7 +267,7 @@ function InnerWorld() {
               { icon: '✉️', label: 'Email', url: `mailto:${profile.contact.email}` },
               { icon: '📞', label: 'Phone', url: `tel:${profile.contact.phone}` },
               { icon: '🐙', label: 'GitHub', url: profile.contact.github },
-              { icon: '💼', label: 'LinkedIn', url: profile.contact.linkedin },
+              { icon: '👥', label: 'Facebook', url: profile.contact.facebook },
             ].map((l) => (
               <Pressable
                 key={l.label}
@@ -303,9 +305,9 @@ function InnerWorld() {
       </View>
 
       {toast && (
-        <View style={[styles.toast, { top: insets.top + 64 }]}>
+        <Pressable onPress={() => setToast(null)} style={[styles.toast, { top: insets.top + 64 }]}>
           <Text style={styles.toastT}>{toast}</Text>
-        </View>
+        </Pressable>
       )}
 
       {openProject !== null && <ProjectsScreen initial={openProject} onClose={() => setOpenProject(null)} />}
@@ -377,6 +379,6 @@ const styles = StyleSheet.create({
   links: { flexDirection: 'row', gap: space.s, marginBottom: space.m },
   link: { flex: 1, height: 72, borderRadius: radius.m, borderWidth: 1, borderColor: colors.cardBorder, backgroundColor: colors.card, alignItems: 'center', justifyContent: 'center' },
   linkL: { color: colors.text, fontSize: 11.5, fontWeight: '700', marginTop: 2 },
-  toast: { position: 'absolute', alignSelf: 'center', backgroundColor: colors.card, borderColor: colors.curious, borderWidth: 1, borderRadius: 20, paddingHorizontal: space.l, paddingVertical: space.s },
-  toastT: { color: colors.text, fontWeight: '700' },
+  toast: { position: 'absolute', alignSelf: 'center', maxWidth: '88%', backgroundColor: colors.card, borderColor: colors.curious, borderWidth: 1, borderRadius: 20, paddingHorizontal: space.l, paddingVertical: space.s },
+  toastT: { color: colors.text, fontWeight: '700', textAlign: 'center', lineHeight: 21 },
 });

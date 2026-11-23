@@ -1,7 +1,6 @@
 import type { ImageSourcePropType } from 'react-native';
 import type { L } from '../i18n';
 
-// ⚠️ TODO: холбоо барих мэдээллээ бодитоор солиорой (зөвхөн нийтэд ил болгоход татгалзахгүй мэдээлэл)
 export const profile = {
   // TODO: хөрөг зургаа assets/photo.jpg болгон хийгээд доорх мөрийг: photo: require('../../assets/photo.jpg') as ImageSourcePropType,
   photo: undefined as ImageSourcePropType | undefined,
@@ -20,10 +19,10 @@ export const profile = {
     en: 'I’m an Information Systems student. Through data warehousing, data mining and business analysis courses I learned to explain real problems with numbers using SQL, RapidMiner and Jaspersoft. I can also build apps and design interfaces, so my analysis reaches people in a clear form. Currently looking for a data analyst internship.',
   } as L,
   contact: {
-    email: 'your.email@example.com', // TODO
-    phone: '+97600000000', // TODO
-    github: 'https://github.com/your-username', // TODO
-    linkedin: 'https://www.linkedin.com/in/your-profile', // TODO
+    email: 'nbayalagmaaa@gmail.com',
+    phone: '+97685053023',
+    github: 'https://github.com/bayalagmaa',
+    facebook: 'https://www.facebook.com/', // TODO: Facebook профайлын бүтэн холбоосоо энд тавина (Бая лаг маа)
   },
   experience: [
     {
@@ -39,7 +38,7 @@ export const profile = {
     { name: { mn: 'Монгол', en: 'Mongolian' } as L, level: { mn: 'Төрөлх', en: 'Native' } as L },
     { name: { mn: 'Англи', en: 'English' } as L, level: { mn: 'B1', en: 'B1' } as L },
   ],
-  // Далд ухамсар: намайг хөдөлгөдөг зүйлс — TODO: өөрийнхөөрөө солиорой
+  // Далд ухамсар: намайг хөдөлгөдөг зүйлс
   drives: [
     { emoji: '🔍', title: { mn: 'Сониуч зан', en: 'Curiosity' }, text: { mn: 'Тоо бүрийн цаана «яагаад?» гэсэн асуулт нуугдаж байдаг.', en: 'Behind every number hides a “why?”.' } },
     { emoji: '🫶', title: { mn: 'Хүнийг ойлгох', en: 'Understanding people' }, text: { mn: 'Борлуулалтын зөвлөх байхдаа хүмүүсийн шийдвэр гаргалт сонирхолтой санагдсан.', en: 'As a sales consultant I got fascinated by how people make decisions.' } },
@@ -49,7 +48,7 @@ export const profile = {
     mn: 'Мөрөөдөл: хэрэглэгчийн зан төлөвийг өгөгдлөөр тайлбарлаж, компаниудад хүмүүсээ илүү сайн ойлгоход тусалдаг аналист болох.',
     en: 'Dream: become an analyst who explains customer behaviour with data and helps companies understand their people.',
   } as L,
-  // Сэгсрэхэд гарах баримт — TODO: өөрийнхөөрөө солиорой
+  // Easter egg: утсаа сэгсрэхэд гарах нууц баримт
   funFact: {
     mn: 'Би одод болон өгөгдлийг адилхан хардаг — хоёулаа холоос замбараагүй, ойроос хэв маягтай. Тийм ч учраас зурхайн «Mystic» апп хийсэн 🌙',
     en: 'I see stars and data the same way — chaotic from afar, patterned up close. That’s why I built a zodiac app called “Mystic” 🌙',
