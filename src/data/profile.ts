@@ -21,8 +21,8 @@ export const profile = {
   contact: {
     email: 'nbayalagmaaa@gmail.com',
     phone: '+97685053023',
-    github: 'https://github.com/bayalagmaa',
-    facebook: 'https://www.facebook.com/', // TODO: Facebook профайлын бүтэн холбоосоо энд тавина (Бая лаг маа)
+    github: 'https://github.com/Bayalagmaa13',
+    facebook: 'https://www.facebook.com/Bayalagmaa.bk/',
   },
   experience: [
     {

@@ -3,7 +3,7 @@
 **SWM231 Mobile Programming · Бүтээлч ажил** · B22FT1005 · 406 анги
 
 📲 **Утсан дээр нээх:** APK — `<EAS build-ийн холбоосыг энд тавина>`
-🐙 **GitHub:** https://github.com/bayalagmaa
+🐙 **GitHub:** https://github.com/Bayalagmaa13
 ✉️ nbayalagmaaa@gmail.com
 
 > Сэтгэл зүй × Өгөгдөл. Доош гүйлгэх тусам камер миний толгой руу шумбаж,

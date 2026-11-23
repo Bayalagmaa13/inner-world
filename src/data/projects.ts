@@ -28,7 +28,6 @@ export type Project = {
   images?: ImageSourcePropType[];
 };
 
-const GITHUB = 'https://github.com/bayalagmaa';
 
 const flow = (...labels: string[]) => labels.map((label) => ({ label, value: 1 }));
 
@@ -56,7 +55,7 @@ export const projects: Project[] = [
       mn: 'Нэвтрэлтээс төлбөр хүртэлх бүтэн урсгалтай мобайл апп — өгөгдлийг хэрэглэгчид хүргэх «сүүлийн миль»-ийг өөрөө хийж чадна.',
       en: 'A full mobile app from sign-in to payment — I can build the “last mile” that delivers data to users.',
     },
-    link: GITHUB,
+    link: 'https://github.com/Bayalagmaa13/mystic',
     viz: 'zodiac',
     vizData: [],
     images: [
@@ -90,7 +89,7 @@ export const projects: Project[] = [
       mn: 'Ахиц дэлгэц нь дууссан даалгавар, quiz-ийн дундаж, 7 хоногийн суралцалтыг тоо, графикаар харуулдаг — өгөгдөлд суурилсан зуршил.',
       en: 'The Progress screen shows finished tasks, quiz average and 7-day study time as numbers and charts — data-driven habits.',
     },
-    link: GITHUB,
+    link: 'https://github.com/Bayalagmaa13/StudyMateAI',
     viz: 'flow',
     vizData: flow('Plan', 'Study', 'Quiz', '📈'),
     images: [require('../../assets/projects/studymate-1.jpg')],
