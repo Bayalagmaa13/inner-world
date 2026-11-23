@@ -28,6 +28,7 @@ import ProjectsScreen from './src/screens/ProjectsScreen';
 import { useShake } from './src/hooks/useShake';
 import { useTiltRef } from './src/hooks/useTiltRef';
 import { tap, thud, success, warn } from './src/utils/haptics';
+import { playChime, playPop } from './src/utils/sound';
 
 export default function App() {
   return (
@@ -66,6 +67,7 @@ function InnerWorld() {
 
   const changeEmotion = (i: number, sound = true) => {
     thud();
+    if (sound) playChime(i);
     setEmo(i);
     input.current.bounce = true;
   };
@@ -74,6 +76,7 @@ function InnerWorld() {
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useShake(() => {
     warn();
+    playPop();
     changeEmotion(1, false);
     setToast(`${t(ui.shake)}\n${t(profile.funFact)}`);
     if (toastTimer.current) clearTimeout(toastTimer.current);
