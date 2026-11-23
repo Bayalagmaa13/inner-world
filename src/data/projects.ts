@@ -117,6 +117,7 @@ export const projects: Project[] = [
       mn: 'Цөөн алхамтай, ойлгомжтой захиалгын урсгал — зүйлсийг хүнд ойлгомжтой болгох ур чадвар.',
       en: 'A short, clear ordering flow — the skill of making things understandable for people.',
     },
+    link: 'https://www.figma.com/proto/Q864pKIQ7mS7rPr5hLkdHt/N.Bayalagmaa_CGR321Coffee-House-Prototype?node-id=2-403&starting-point-node-id=2%3A388',
     viz: 'flow',
     vizData: flow('Menu', 'Cart', 'Pay', '✓'),
     images: [

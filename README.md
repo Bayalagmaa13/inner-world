@@ -64,6 +64,11 @@ npx eas-cli@latest login
 npx eas-cli@latest build -p android --profile preview
 ```
 
+## 🔗 Бүтээлүүдийн холбоос
+- Mystic — https://github.com/Bayalagmaa13/mystic
+- StudyMate AI — https://github.com/Bayalagmaa13/StudyMateAI
+- Coffee House (Figma прототип) — https://www.figma.com/proto/Q864pKIQ7mS7rPr5hLkdHt/N.Bayalagmaa_CGR321Coffee-House-Prototype?node-id=2-403&starting-point-node-id=2%3A388
+
 ## 📚 Эх сурвалж
 - Санаа: moncy.dev зэрэг 3D портфолио сайтуудаас санаа авсан (код хуулаагүй).
 - Бүх 3D дүр, график, icon-ыг энэ төсөлд зориулж кодоор бүтээсэн.
