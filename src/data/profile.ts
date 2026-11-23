@@ -11,8 +11,8 @@ export const profile = {
     en: 'I want to understand human behaviour through data.',
   } as L,
   school: {
-    mn: 'СЭЗИС · Мэдээллийн систем · 3-р курс (2028 төгсөнө)',
-    en: 'UFE · Information Systems · 3rd year (graduating 2028)',
+    mn: 'СЭЗИС · Мэдээллийн систем (2028 төгсөнө)',
+    en: 'UFE · Information Systems (graduating 2028)',
   } as L,
   bio: {
     mn: 'Би мэдээллийн системийн оюутан. Өгөгдлийн агуулах, өгөгдөл олборлолт, бизнес шинжилгээний хичээлүүдээр SQL, RapidMiner, Jaspersoft ашиглан бодит асуудлыг тоогоор тайлбарлаж сурсан. Апп хөгжүүлж, дизайн хийж чаддаг тул шинжилгээгээ хэрэглэгчид ойлгомжтой хэлбэрээр хүргэж чадна. Одоо дата аналистын дадлага хайж байна.',

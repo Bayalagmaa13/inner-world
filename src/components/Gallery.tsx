@@ -4,17 +4,34 @@ import { colors, radius, space } from '../theme';
 import { tap } from '../utils/haptics';
 
 /**
- * Бүтээлийн screenshot-ууд: жижиг зургууд → дарахад бүтэн дэлгэцээр гүйлгэж үзнэ.
+ * Бүтээлийн screenshot-ууд: том картууд хажуу тийш гүйлгэнэ → дарахад бүтэн дэлгэцээр (2 хуруугаар томруулж) үзнэ.
  */
 export default function Gallery({ images, color }: { images: ImageSourcePropType[]; color: string }) {
   const { width, height } = useWindowDimensions();
   const [open, setOpen] = useState<number | null>(null);
   const [page, setPage] = useState(0);
 
+  // Том карт: дэлгэцийн ~72% өргөн, зургийн жинхэнэ харьцаагаар (тайрахгүй)
+  const cardW = Math.round((width - space.l * 2) * 0.72);
+  const sizeOf = (src: ImageSourcePropType) => {
+    const r = Image.resolveAssetSource(src as any);
+    const ratio = r && r.width ? r.height / r.width : 16 / 9;
+    return { width: cardW, height: Math.min(Math.round(cardW * ratio), Math.round(cardW * 2.1)) };
+  };
+
   return (
     <>
-      <View style={styles.row}>
-        {images.slice(0, 3).map((src, i) => (
+      <ScrollView
+        horizontal
+        nestedScrollEnabled
+        showsHorizontalScrollIndicator={false}
+        decelerationRate="fast"
+        snapToInterval={cardW + space.m}
+        snapToAlignment="start"
+        contentContainerStyle={styles.row}
+        style={styles.strip}
+      >
+        {images.map((src, i) => (
           <Pressable
             key={i}
             onPress={() => {
@@ -22,17 +39,18 @@ export default function Gallery({ images, color }: { images: ImageSourcePropType
               setPage(i);
               setOpen(i);
             }}
-            style={[styles.thumb, { borderColor: color }]}
+            style={[styles.thumb, sizeOf(src), { borderColor: color }]}
           >
-            <Image source={src} style={StyleSheet.absoluteFill} resizeMode="cover" />
-            {i === 2 && images.length > 3 && (
-              <View style={styles.more}>
-                <Text style={styles.moreText}>+{images.length - 3}</Text>
-              </View>
-            )}
+            <Image source={src} style={StyleSheet.absoluteFill} resizeMode="contain" />
+            <View style={[styles.badge, { backgroundColor: color }]}>
+              <Text style={styles.badgeText}>
+                {i + 1}/{images.length}
+              </Text>
+            </View>
           </Pressable>
         ))}
-      </View>
+      </ScrollView>
+      {images.length > 1 && <Text style={styles.hint}>← → гүйлгэх · дарж томруулах 🔍</Text>}
 
       <Modal visible={open !== null} transparent animationType="fade" onRequestClose={() => setOpen(null)}>
         <View style={styles.viewer}>
@@ -44,7 +62,17 @@ export default function Gallery({ images, color }: { images: ImageSourcePropType
             onMomentumScrollEnd={(e) => setPage(Math.round(e.nativeEvent.contentOffset.x / width))}
           >
             {images.map((src, i) => (
-              <Image key={i} source={src} style={{ width, height: height * 0.8 }} resizeMode="contain" />
+              <ScrollView
+                key={i}
+                style={{ width, height }}
+                contentContainerStyle={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}
+                maximumZoomScale={3}
+                minimumZoomScale={1}
+                centerContent
+                showsVerticalScrollIndicator={false}
+              >
+                <Image source={src} style={{ width: width - 16, height: height * 0.86 }} resizeMode="contain" />
+              </ScrollView>
             ))}
           </ScrollView>
           <Text style={styles.counter}>
@@ -75,12 +103,14 @@ export function Avatar({ source, size = 96, letter = 'Б' }: { source?: ImageSou
 }
 
 const styles = StyleSheet.create({
-  row: { flexDirection: 'row', gap: space.s, marginBottom: space.m },
-  thumb: { flex: 1, aspectRatio: 9 / 16, maxHeight: 180, borderRadius: radius.s, borderWidth: 1, overflow: 'hidden', backgroundColor: colors.card },
-  more: { ...StyleSheet.absoluteFill, backgroundColor: 'rgba(0,0,0,0.55)', alignItems: 'center', justifyContent: 'center' },
-  moreText: { color: colors.text, fontSize: 20, fontWeight: '800' },
+  strip: { marginHorizontal: -space.l, marginBottom: space.xs },
+  row: { gap: space.m, paddingHorizontal: space.l, alignItems: 'flex-start' },
+  thumb: { borderRadius: radius.m, borderWidth: 1.5, overflow: 'hidden', backgroundColor: '#0B0718' },
+  badge: { position: 'absolute', top: 8, right: 8, paddingHorizontal: 8, paddingVertical: 2, borderRadius: 10 },
+  badgeText: { color: '#140C2A', fontSize: 11, fontWeight: '800' },
+  hint: { color: colors.muted, fontSize: 11, textAlign: 'center', marginBottom: space.m },
   viewer: { flex: 1, backgroundColor: 'rgba(3,5,15,0.96)', justifyContent: 'center' },
-  counter: { position: 'absolute', bottom: 48, alignSelf: 'center', color: colors.muted, fontSize: 14 },
+  counter: { position: 'absolute', bottom: 40, alignSelf: 'center', color: colors.muted, fontSize: 14 },
   close: { position: 'absolute', top: 56, right: 24, width: 48, height: 48, alignItems: 'center', justifyContent: 'center' },
   closeText: { color: colors.text, fontSize: 26 },
   avatarRing: {

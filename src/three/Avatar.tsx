@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { useFrame } from './fiber';
 import * as THREE from 'three';
 import type { Emotion } from '../data/emotions';
 

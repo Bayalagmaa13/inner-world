@@ -1,5 +1,5 @@
 import React, { useMemo, useRef } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from './fiber';
 import * as THREE from 'three';
 import Avatar, { AvatarInput } from './Avatar';
 import type { Emotion } from '../data/emotions';
