@@ -30,7 +30,7 @@ export const ui = {
   s4: { mn: '04 · Далд ухамсар', en: '04 · Subconscious' },
   s4t: { mn: 'Намайг хөдөлгөдөг зүйлс', en: 'What drives me' },
   s5: { mn: '05 · Холбогдох', en: '05 · Connect' },
-  s5t: { mn: 'Ярилцъя уу?', en: 'Shall we talk?' },
+  s5t: { mn: 'Ярилцах уу?', en: 'Shall we talk?' },
   projects: { mn: 'Бүтээлүүд', en: 'Projects' },
   stats: [
     { mn: 'Бүтээл', en: 'Projects' },

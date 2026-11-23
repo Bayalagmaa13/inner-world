@@ -2,12 +2,11 @@ import type { ImageSourcePropType } from 'react-native';
 import type { L } from '../i18n';
 
 export const profile = {
-  // TODO: хөрөг зургаа assets/photo.jpg болгон хийгээд доорх мөрийг: photo: require('../../assets/photo.jpg') as ImageSourcePropType,
-  photo: undefined as ImageSourcePropType | undefined,
+  photo: require('../../assets/photo.jpg') as ImageSourcePropType,
   name: { mn: 'Н.Баялагмаа', en: 'Bayalagmaa N.' } as L,
   role: { mn: 'Ирээдүйн дата аналист', en: 'Aspiring Data Analyst' } as L,
   tagline: {
-    mn: 'Хүний зан төлөвийг өгөгдлөөр ойлгохыг зорьдог.',
+    mn: 'Хүний зан төлвийг өгөгдлөөр ойлгохыг зорьдог.',
     en: 'I want to understand human behaviour through data.',
   } as L,
   school: {
@@ -45,7 +44,7 @@ export const profile = {
     { emoji: '🌱', title: { mn: 'Тасралтгүй өсөлт', en: 'Constant growth' }, text: { mn: 'Өчигдрийн өөрөөсөө өнөөдөр арай илүү байх.', en: 'Be a little better than yesterday’s me.' } },
   ] as { emoji: string; title: L; text: L }[],
   dream: {
-    mn: 'Мөрөөдөл: хэрэглэгчийн зан төлөвийг өгөгдлөөр тайлбарлаж, компаниудад хүмүүсээ илүү сайн ойлгоход тусалдаг аналист болох.',
+    mn: 'Мөрөөдөл: хэрэглэгчийн зан төлвийг өгөгдлөөр тайлбарлаж, компаниудад хүмүүсээ илүү сайн ойлгоход тусалдаг аналист болох.',
     en: 'Dream: become an analyst who explains customer behaviour with data and helps companies understand their people.',
   } as L,
   // Easter egg: утсаа сэгсрэхэд гарах нууц баримт

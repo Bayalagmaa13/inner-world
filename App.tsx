@@ -24,6 +24,7 @@ import { projects } from './src/data/projects';
 import { groups, skills, Group } from './src/data/skills';
 import { Card, Chip, LangToggle } from './src/components/ui';
 import CvExport from './src/components/CvExport';
+import { Avatar } from './src/components/Gallery';
 import ProjectsScreen from './src/screens/ProjectsScreen';
 import { useShake } from './src/hooks/useShake';
 import { useTiltRef } from './src/hooks/useTiltRef';
@@ -145,6 +146,9 @@ function InnerWorld() {
             accessibilityLabel="avatar"
           />
           <View style={{ flex: 1 }} />
+          <View style={{ alignItems: 'center', marginBottom: space.s }}>
+            <Avatar source={profile.photo} size={72} />
+          </View>
           <Text style={[styles.kicker, { color: e.color }]}>{t(ui.kicker)}</Text>
           <Text style={styles.name}>{t(profile.name)}</Text>
           <Text style={styles.role}>{t(profile.role)}</Text>
@@ -263,6 +267,9 @@ function InnerWorld() {
         <Section index={5} tops={tops} style={sectionStyle}>
           <View style={{ flex: 1 }} />
           <Text style={[styles.label, { color: colors.curious, textAlign: 'center' }]}>{t(ui.s5)}</Text>
+          <View style={{ alignItems: 'center', marginVertical: space.m }}>
+            <Avatar source={profile.photo} size={120} />
+          </View>
           <Text style={[styles.name, { fontSize: 30 }]}>{t(ui.s5t)}</Text>
           <Text style={[styles.tagline, { marginBottom: space.l }]}>{t(ui.bye)}</Text>
           <View style={styles.links}>

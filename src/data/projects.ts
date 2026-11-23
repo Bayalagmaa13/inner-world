@@ -26,6 +26,8 @@ export type Project = {
   vizData: { label: string; value: number }[];
   /** Screenshot-ууд — бүгд өөрийн бүтээлийн дэлгэцийн зураг */
   images?: ImageSourcePropType[];
+  /** Жижиг хүрээнд харуулах хувилбарууд (200pt өндөртэй, @3x) — images-тэй ижил дараалал */
+  thumbs?: ImageSourcePropType[];
 };
 
 
@@ -65,6 +67,13 @@ export const projects: Project[] = [
       require('../../assets/projects/mystic-4.jpg'),
       require('../../assets/projects/mystic-5.jpg'),
     ],
+    thumbs: [
+      require('../../assets/projects/thumbs/mystic-1.jpg'),
+      require('../../assets/projects/thumbs/mystic-2.jpg'),
+      require('../../assets/projects/thumbs/mystic-3.jpg'),
+      require('../../assets/projects/thumbs/mystic-4.jpg'),
+      require('../../assets/projects/thumbs/mystic-5.jpg'),
+    ],
   },
   {
     id: 'studymate',
@@ -93,6 +102,7 @@ export const projects: Project[] = [
     viz: 'flow',
     vizData: flow('Plan', 'Study', 'Quiz', '📈'),
     images: [require('../../assets/projects/studymate-1.jpg')],
+    thumbs: [require('../../assets/projects/thumbs/studymate-1.jpg')],
   },
   {
     id: 'coffee',
@@ -126,6 +136,13 @@ export const projects: Project[] = [
       require('../../assets/projects/coffee-3.jpg'),
       require('../../assets/projects/coffee-4.jpg'),
       require('../../assets/projects/coffee-5.jpg'),
+    ],
+    thumbs: [
+      require('../../assets/projects/thumbs/coffee-1.jpg'),
+      require('../../assets/projects/thumbs/coffee-2.jpg'),
+      require('../../assets/projects/thumbs/coffee-3.jpg'),
+      require('../../assets/projects/thumbs/coffee-4.jpg'),
+      require('../../assets/projects/thumbs/coffee-5.jpg'),
     ],
   },
   {

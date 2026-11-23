@@ -4,19 +4,21 @@ import { colors, radius, space } from '../theme';
 import { tap } from '../utils/haptics';
 
 /**
- * Бүтээлийн screenshot-ууд: том картууд хажуу тийш гүйлгэнэ → дарахад бүтэн дэлгэцээр (2 хуруугаар томруулж) үзнэ.
+ * Бүтээлийн screenshot-ууд: жижиг хүрээнүүд хажуу тийш гүйлгэнэ → дарахад бүтэн дэлгэцээр (2 хуруугаар томруулж) үзнэ.
  */
-export default function Gallery({ images, color }: { images: ImageSourcePropType[]; color: string }) {
+export default function Gallery({ images, thumbs, color }: { images: ImageSourcePropType[]; thumbs?: ImageSourcePropType[]; color: string }) {
   const { width, height } = useWindowDimensions();
   const [open, setOpen] = useState<number | null>(null);
   const [page, setPage] = useState(0);
 
-  // Том карт: дэлгэцийн ~72% өргөн, зургийн жинхэнэ харьцаагаар (тайрахгүй)
-  const cardW = Math.round((width - space.l * 2) * 0.72);
+  // Жижиг хүрээ: тогтмол өндөр, өргөн нь зургийн жинхэнэ харьцаагаар → зураг тайрагдахгүй, бүтнээрээ харагдана
+  const FRAME_H = 200;
+  const maxW = Math.round(width * 0.7);
   const sizeOf = (src: ImageSourcePropType) => {
     const r = Image.resolveAssetSource(src as any);
-    const ratio = r && r.width ? r.height / r.width : 16 / 9;
-    return { width: cardW, height: Math.min(Math.round(cardW * ratio), Math.round(cardW * 2.1)) };
+    const ratio = r && r.width ? r.height / r.width : 2.16; // өндөр / өргөн (утасны screenshot ~2.16)
+    const w = Math.min(Math.round(FRAME_H / ratio), maxW);
+    return { width: w, height: Math.round(w * ratio) };
   };
 
   return (
@@ -25,13 +27,12 @@ export default function Gallery({ images, color }: { images: ImageSourcePropType
         horizontal
         nestedScrollEnabled
         showsHorizontalScrollIndicator={false}
-        decelerationRate="fast"
-        snapToInterval={cardW + space.m}
-        snapToAlignment="start"
         contentContainerStyle={styles.row}
         style={styles.strip}
       >
-        {images.map((src, i) => (
+        {images.map((src, i) => {
+          const sz = sizeOf(src);
+          return (
           <Pressable
             key={i}
             onPress={() => {
@@ -39,16 +40,18 @@ export default function Gallery({ images, color }: { images: ImageSourcePropType
               setPage(i);
               setOpen(i);
             }}
-            style={[styles.thumb, sizeOf(src), { borderColor: color }]}
+            style={[styles.thumb, { borderColor: color }]}
           >
-            <Image source={src} style={StyleSheet.absoluteFill} resizeMode="contain" />
+            {/* Жижиг thumbnail нь хүрээтэйгээ ижил хэмжээтэй тул iOS дээр ч томрохгүй, бүтнээрээ харагдана */}
+            <Image source={thumbs?.[i] ?? src} style={{ width: sz.width, height: sz.height }} resizeMode="contain" />
             <View style={[styles.badge, { backgroundColor: color }]}>
               <Text style={styles.badgeText}>
                 {i + 1}/{images.length}
               </Text>
             </View>
           </Pressable>
-        ))}
+          );
+        })}
       </ScrollView>
       {images.length > 1 && <Text style={styles.hint}>← → гүйлгэх · дарж томруулах 🔍</Text>}
 
@@ -104,7 +107,7 @@ export function Avatar({ source, size = 96, letter = 'Б' }: { source?: ImageSou
 
 const styles = StyleSheet.create({
   strip: { marginHorizontal: -space.l, marginBottom: space.xs },
-  row: { gap: space.m, paddingHorizontal: space.l, alignItems: 'flex-start' },
+  row: { gap: space.s, paddingHorizontal: space.l, alignItems: 'center' },
   thumb: { borderRadius: radius.m, borderWidth: 1.5, overflow: 'hidden', backgroundColor: '#0B0718' },
   badge: { position: 'absolute', top: 8, right: 8, paddingHorizontal: 8, paddingVertical: 2, borderRadius: 10 },
   badgeText: { color: '#140C2A', fontSize: 11, fontWeight: '800' },

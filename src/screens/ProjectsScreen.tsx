@@ -62,7 +62,7 @@ export default function ProjectsScreen({ onClose, initial = 0 }: { onClose: () =
                 <ProjectViz p={p} width={width - space.l * 2 - space.s * 2 - 2} active={i === page} />
               </Card>
 
-              {p.images && p.images.length > 0 && <Gallery images={p.images} color={c} />}
+              {p.images && p.images.length > 0 && <Gallery images={p.images} thumbs={p.thumbs} color={c} />}
 
               <Step n="01" label={ui.problem} text={p.problem} color={c} />
               <Step n="02" label={ui.data} text={p.data} color={c} />
