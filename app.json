@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Inner World · Bayalagmaa",
+    "slug": "inner-world-bayalagmaa",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#060A1C",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bayalagmaa.innerworld"
+    },
+    "android": {
+      "package": "com.bayalagmaa.innerworld",
+      "adaptiveIcon": {
+        "backgroundColor": "#060A1C",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 220,
+          "resizeMode": "contain",
+          "backgroundColor": "#060A1C"
+        }
+      ]
+    ]
+  }
+}
