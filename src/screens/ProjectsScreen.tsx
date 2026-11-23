@@ -69,7 +69,9 @@ export default function ProjectsScreen({ onClose, initial = 0 }: { onClose: () =
               <Step n="03" label={ui.method} text={p.method} color={c} />
               <Step n="04" label={ui.result} text={p.result} color={c} highlight />
 
-              <Btn label={t(ui.open)} onPress={() => Linking.openURL(p.link)} variant="ghost" color={c} style={{ marginTop: space.m }} />
+              {p.link && (
+                <Btn label={t(ui.open)} onPress={() => Linking.openURL(p.link!)} variant="ghost" color={c} style={{ marginTop: space.m }} />
+              )}
               <Text style={styles.swipe}>{t(ui.swipe)}</Text>
             </ScrollView>
           );
